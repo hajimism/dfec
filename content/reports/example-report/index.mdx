@@ -1,0 +1,68 @@
+---
+title: "はじめてのレポート"
+date: "2025-10-23"
+description: "MDXで書かれたサンプルレポートです"
+tags: ["サンプル", "MDX"]
+---
+
+## はじめに
+
+これはMDXで書かれたレポートのサンプルです。
+
+<Callout type="info">
+このレポートでは、カスタムコンポーネントの使用例も紹介しています！
+</Callout>
+
+## 特徴
+
+MDXでは以下のようなことができます：
+
+- **Markdown記法**が使える
+- Reactコンポーネントが埋め込める
+- コードブロックも美しく表示
+
+```tsx
+const hello = () => {
+  console.log("Hello, World!");
+};
+```
+
+<Callout type="warning">
+カスタムコンポーネントは `components.tsx` に定義します。
+</Callout>
+
+## カスタムコンポーネントの例
+
+<HighlightBox>
+### 重要なポイント
+
+このボックスは `HighlightBox` コンポーネントを使用しています。
+各レポートごとに専用のコンポーネントを定義できます。
+</HighlightBox>
+
+<Callout type="success">
+ディレクトリ構造:
+- `{slug}/index.mdx` - メインコンテンツ
+- `{slug}/components.tsx` - カスタムコンポーネント
+</Callout>
+
+## 画像の表示
+
+### 標準的なMarkdown記法
+
+MDXでは通常のMarkdown記法で画像を表示できます：
+
+![Next.js Logo](/next.svg)
+
+### Next.js Imageコンポーネント（最適化版）
+
+カスタムコンポーネントを使えば、Next.jsのImageコンポーネントで最適化された画像表示も可能です：
+
+<OptimizedImage src="/vercel.svg" alt="Vercel Logo" width={600} height={300} />
+
+SVG画像も問題なく表示されます。publicフォルダに配置した画像は `/` から始まるパスで参照できます。
+
+## まとめ
+
+MDXを使うことで、リッチなコンテンツを簡単に作成できます。
+
