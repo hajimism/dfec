@@ -9,6 +9,7 @@ export type ReportMeta = {
 	date: string;
 	description?: string;
 	tags?: string[];
+	publish?: boolean;
 };
 
 export type Report = {
@@ -71,7 +72,9 @@ export const getAllReports = (): Report[] => {
 		}
 	}
 
-	return reports.sort((a, b) => (a.meta.date < b.meta.date ? 1 : -1));
+	return reports
+		.filter((report) => report.meta.publish !== false)
+		.sort((a, b) => (a.meta.date < b.meta.date ? 1 : -1));
 };
 
 export const getReportBySlug = (slug: string): Report | null => {
