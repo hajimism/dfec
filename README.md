@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DFEC - Designer Friendly Engineer Charter
 
-## Getting Started
+**デザイナーにやさしいエンジニア委員会**の活動記録サイト
 
-First, run the development server:
+デザイナーと協働するエンジニアのための研究・実践プロジェクト。具体的なエピソードから理想状態を描き、課題解決の企画を考え、活動報告書としてまとめます。
+
+## 概要
+
+- **プロジェクト名**: DFEC (Designer-friendly Engineers Club)
+- **目的**: デザイナーにやさしいエンジニアを目指すための活動研究
+- **コンセプト**: まだちいさくて、でもアツいクラブ
+
+## 技術スタック
+
+- **フレームワーク**: Next.js 16 (App Router)
+- **言語**: TypeScript
+- **スタイリング**: Tailwind CSS 4, shadcn/ui
+- **MDX**: @next/mdx, next-mdx-remote
+- **リンター/フォーマッター**: Biome
+- **パッケージマネージャー**: Bun
+- **スキャフォールド**: scaffdog
+
+## 開発環境のセットアップ
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+# 依存関係のインストール
+bun install
+
+# 開発サーバーの起動
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+開発サーバーが起動したら [http://localhost:3000](http://localhost:3000) にアクセスしてください。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## プロジェクト構造
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+.
+├── app/                   # Next.js App Router
+│   ├── charter/          # デザイナーにやさしいエンジニア憲章
+│   ├── reports/          # 活動報告一覧・詳細ページ
+│   └── page.tsx          # トップページ
+├── content/              # コンテンツディレクトリ
+│   ├── _commands/        # 企画作成の手順書
+│   └── reports/          # 活動報告記事（MDX形式）
+├── components/           # Reactコンポーネント
+│   ├── ui/              # shadcn/uiコンポーネント
+│   └── header.tsx       # グローバルヘッダー
+└── lib/                  # ユーティリティ関数
+    └── mdx.ts           # MDXファイル処理
+```
 
-## Learn More
+## コンテンツ作成ワークフロー
 
-To learn more about Next.js, take a look at the following resources:
+### 活動報告の作成手順
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **新規レポートの生成**
+```bash
+bun run new:report
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+これにより `content/reports/draft-report/` 配下に以下が自動生成されます：
+- `_thinking.md` - 各ステップの検討内容
+- `_ideas.md` - 企画案の検討
+- `index.mdx` - 活動報告書（最終成果物）
 
-## Deploy on Vercel
+2. **ディレクトリのリネーム**
+```bash
+mv content/reports/draft-report content/reports/適切なスラッグ名
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **コンテンツの作成**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+企画検討プロセス（`content/_commands/index.md` 参照）：
+- **Step 0**: 具体的なエピソード（あるある）の提示
+- **Step 1**: 理想状態の描写
+- **Step 2**: 現状の問題の言語化
+- **Step 3**: Before/Afterアンケート項目の設計
+- **Step 4**: 活動報告書ドラフトの作成
+- **Step 5**: 具体的な企画案の立案
+
+### レポートフォーマット
+
+MDXファイルには以下のfrontmatterを含めます：
+
+```yaml
+---
+title: "レポートタイトル"
+date: "2025-10-25"
+description: "レポートの概要説明"
+tags: ["タグ1", "タグ2"]
+---
+```
+
+## 利用可能なスクリプト
+
+```bash
+# 開発サーバーの起動
+bun dev
+
+# 本番ビルド
+bun build
+
+# 本番サーバーの起動
+bun start
+
+# Lintチェック
+bun lint
+
+# Lintエラーの自動修正
+bun lint:fix
+
+# コードフォーマット
+bun format
+
+# 新規レポートの生成
+bun run new:report
+```
+
+## 主要機能
+
+- **レポート管理システム**: MDXベースの活動報告記事
+- **テーマ切り替え**: ライト/ダーク/システム設定
+- **デザイナー憲章**: 10項目の行動指針
+- **レスポンシブデザイン**: モバイル対応
+- **Typography**: Tailwind Typographyによる読みやすい記事表示
+
+## ライセンス
+
+Private
